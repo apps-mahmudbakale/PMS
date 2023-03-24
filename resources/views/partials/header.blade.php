@@ -1,4 +1,4 @@
-<header class="w-full bg-white py-7 px-10 shadow-md flex items-center justify-between sticky top-0">
+<header class="w-full bg-white py-4 px-10 shadow-md flex items-center justify-between sticky top-0">
     <h1 class="text-2xl font-bold">Users</h1>
     <div class="flex items-center relative p-5">
         <div class="relative pr-10">

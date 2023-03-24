@@ -13,19 +13,21 @@
                 <span class="ml-3">Dashboard</span>
             </a>
         </li>
-        <li class="{{ request()->is('app/users*') ? 'bg-white bg-opacity-10' : '' }} {{ request()->is('app/roles*') ? 'bg-white bg-opacity-10' : '' }}">
+        <li
+            class=" rounded {{ request()->is('app/users*') ? 'bg-white bg-opacity-10' : '' }} {{ request()->is('app/roles*') ? 'bg-white bg-opacity-10' : '' }}">
             <a type="button"
-                class="flex items-center p-5 w-full font-normal text-gray-900 rounded-lg transition duration-75 group text-white"
+                class="flex items-center p-5 w-full font-normal text-gray-900 rounded-lg transition duration-75 group text-white cursor-pointer
+                "
                 aria-controls="dropdown-authentication" data-collapse-toggle="dropdown-authentication">
                 <span class="flex-1 ml-3 text-left whitespace-nowrap">Authentication</span>
             </a>
             <ul id="dropdown-authentication" class="hidden py-2 space-y-2">
                 <li class="{{ request()->is('app/users*') ? 'bg-white bg-opacity-10' : '' }}">
-                    <a href="{{ route('app.users.index')}}"
+                    <a href="{{ route('app.users.index') }}"
                         class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 text-white ">
                         Users</a>
                 </li>
-                <li class="{{ request()->is('app/roles*') ? 'bg-white bg-opacity-10' : '' }}" >
+                <li class="{{ request()->is('app/roles*') ? 'bg-white bg-opacity-10' : '' }}">
                     <a href="#"
                         class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group text-white ">Roles</a>
                 </li>
