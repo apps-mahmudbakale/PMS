@@ -18,7 +18,7 @@
     <!-- Scripts -->
 </head>
 <body>
-    <div class="container">
+    <div>
         @yield('content')
     </div>
     <script src="{{ asset('script.js') }}"></script>
