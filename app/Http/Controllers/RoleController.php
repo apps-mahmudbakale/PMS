@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('users.index');
+        return view('roles.index');
     }
 
     /**
@@ -21,8 +19,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
-        return view('users.create', compact('roles'));
+        //
     }
 
     /**
@@ -30,9 +27,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create(array_merge($request->except('password'), ['password' => bcrypt($request->phone)]));
-        $user->syncRoles($request->input('roles', []));
-        return redirect()->route('app.users.index')->with('success', 'User Added');
+        //
     }
 
     /**
@@ -46,10 +41,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(string $id)
     {
-        $roles = Role::all();
-        return view('users.edit', compact('user', 'roles'));
+        //
     }
 
     /**
