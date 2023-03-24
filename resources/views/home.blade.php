@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="flex relative pb-24">
+    <section class="flex relative pb-24">
         <aside class="w-[260px] bg-[#0F151F] h-screen fixed top-0 left-0 px-2 py-12">
             <div class="flex">
                 <img src="{{ asset('assets/logo.svg') }}" alt="Home">
@@ -57,32 +57,47 @@
                             class="min-w-5 h-5 rounded-full p-1 bg-red-600 text-white text-xs grid place-content-center absolute -top-3 -right-2">
                             26</div>
                     </div>
-                    <div class="w-10 h-10 rounded-full border-2 border-gray-400 ml-10 mr-3"></div>
-                    <div class="mr-2 text-sm">Peter Rabbit</div>
-                    <img src="./assets/chevron-black.svg" alt="veiw profile" class="w-3" onclick="openProfileOptions()">
-                    <ul
-                        class="profile-options absolute top-full right-0 capitalize bg-white border border-gray-300 rounded cursor-pointer hidden">
-                        <li class="py-2 px-3 hover:bg-gray-200">
-                            <a href="#" class="block w-full">profile</a>
-                        </li>
-                        <li class="text-red-600 py-2 px-3 hover:bg-gray-200">logout</li>
-                    </ul>
+                    {{-- <div class="mr-2 text-sm">Peter Rabbit</div> --}}
+                    <a id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-dark"><img src="{{  asset('user-male-circle.png') }}" width="30" height="30" alt=""> Mahmud Bakale</a>
+                    <!-- Dropdown menu -->
+                    <div id="dropdown"
+                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                                    out</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </header>
-            
-            <section  class="p-10">  
+
+            <section class="p-10">
                 <nav class="bg-white flex items-center p-3 text-gray-600 border border-gray-200 font-semibold">
                     <a href="sales-orders.html" class="text-center text-primary mx-6 text-primary">Sales Orders</a>
                     <a href="#" class="text-center mx-6">Quotations</a>
-                </nav>    
+                </nav>
 
 
-                
+
             </section>
 
 
 
 
         </main>
-</section>
+    </section>
 @endsection
