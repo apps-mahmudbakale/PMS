@@ -14,7 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    @livewireStyles
     <!-- Scripts -->
 </head>
 <body>
@@ -22,5 +22,6 @@
         @yield('content')
     </div>
     <script src="{{ asset('script.js') }}"></script>
+    @livewireScripts
 </body>
 </html>
