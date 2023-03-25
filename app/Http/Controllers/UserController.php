@@ -46,8 +46,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = User::find($id);
         $roles = Role::all();
         return view('users.edit', compact('user', 'roles'));
     }
@@ -64,8 +65,9 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
         $user->delete();
         return redirect()->route('app.users.index')->with('success', 'User Deleted');
     }
