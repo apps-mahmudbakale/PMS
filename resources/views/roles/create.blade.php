@@ -9,8 +9,7 @@
                 <section class="bg-white dark:bg-gray-900">
                     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
                         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Create Role</h2>
-                        <form action="{{ route('app.roles.store') }}" method="POST">
-                            @csrf
+                        <form action="#" class="flex flex-col">
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
                                     <label for="name"
@@ -31,7 +30,23 @@
                                         class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $permission->name }}
                                     </label>
                                 </div>
-                                @endforeach
+
+                                <div class="flex items-center p-4  border-gray-200 rounded dark:border-gray-700">
+                                    <input checked id="bordered-checkbox-2" type="checkbox" value=""
+                                        name="bordered-checkbox"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="bordered-checkbox-2"
+                                        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Checked
+                                        state
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div>
+                                <button type="submit"
+                                    class=" w-24 text-center  pl-6 px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium  text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                    Submit
+                                </button>
                             </div>
                         </form>
                     </div>
