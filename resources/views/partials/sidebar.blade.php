@@ -36,7 +36,7 @@
         </li>
         <li class="bg-opacity-10 p-5 rounded-lg text-white">
             <a href="service-delivery-leads.html" class="flex items-center">
-                <img src="./assets/network.svg" alt="">
+                <img src="{{ route('app.projects.index') }}" alt="">
                 <span class="ml-3">Project</span>
             </a>
         </li>
