@@ -124,9 +124,33 @@
                                                 </li>
                                             </ul>
                                             <div class="py-1">
-                                                <a href="#"
+                                                <a href="#" id="del{{ $user->id }}" data-value="{{ $user->id }}"
                                                     class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
                                             </div>
+                                            <script>
+                                                document.querySelector('#del{{ $user->id }}').addEventListener('click', function(e) {
+                                                    // alert(this.getAttribute('data-value'));
+                                                    Swal.fire({
+                                                        title: 'Are you sure?',
+                                                        text: "You won't be able to revert this!",
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        confirmButtonText: 'Yes, delete it!'
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            document.getElementById('del#'+this.getAttribute('data-value')).submit();
+                                                        }
+                                                    })
+                                                })
+                                            </script>
+                                            <form id="del#{{ $user->id }}"
+                                                action="{{ route('app.users.destroy', $user->id) }}" method="POST"
+                                                 style="display: inline-block;">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -144,7 +168,7 @@
                         <span class="font-semibold text-gray-900 dark:text-white">{{ $users->total() }}</span>
                     </span>
                     <ul class="inline-flex items-stretch -space-x-px">
-                        {{ $users->links() }}
+                        {{ $users->links('pagination::tailwind') }}
                     </ul>
                 </nav>
             </div>
