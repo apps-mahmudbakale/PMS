@@ -1,7 +1,6 @@
 <div>
     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-            <!-- Start coding here -->
             <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg overflow-hidden">
                 <div
                     class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -33,7 +32,7 @@
                             </svg>
                             Create User
                         </a>
-                        
+
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -54,38 +53,22 @@
                         <tbody>
                             @foreach ($users as $user)
                                 <tr class="border-b dark:border-gray-700">
-                                    <td class="px-4 py-3">{{$loop->iteration}}</td>
+                                    <td class="px-4 py-3">{{ $loop->iteration }}</td>
                                     <td class="px-4 py-3">{{ $user->firstname }}</td>
                                     <td class="px-4 py-3">{{ $user->lastname }}</td>
                                     <td class="px-4 py-3">{{ $user->email }}</td>
                                     <td class="px-4 py-3">{{ $user->phone }}</td>
                                     <td class="px-4 py-3">{{ $user->roles->first()->name }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
-                                        <button id="apple-imac-27-dropdown-button"
-                                            data-dropdown-toggle="apple-imac-27-dropdown"
-                                            class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                                            type="button">
-                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
-                                                viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                            </svg>
-                                        </button>
-                                        <div id="apple-imac-27-dropdown"
-                                            class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                                aria-labelledby="apple-imac-27-dropdown-button">
-                                                <li>
-                                                    <a href="{{route('app.users.edit', $user->id)}}"
-                                                        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                                </li>
-                                            </ul>
-                                            <div class="py-1">
-                                                <a href="#" id="del{{ $user->id }}" data-value="{{ $user->id }}"
-                                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                            </div>
+                                            <a href="{{ route('app.users.edit', $user->id) }}" aria-current="page" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                              Edit
+                                            </a>
+                                            <p>&nbsp;</p>
+                                            <button aria-current="page" id="del{{ $user->id }}" data-value="{{ $user->id }}" class="px-3 py-2 text-xs font-medium text-center text-white bg-red-600 rounded hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                                Delete
+                                            </button>
                                             <script>
-                                                document.querySelector('#del{{ $user->id }}').addEventListener('click', function(e) {
+                                                 document.querySelector('#del{{ $user->id }}').addEventListener('click', function(e) {
                                                     // alert(this.getAttribute('data-value'));
                                                     Swal.fire({
                                                         title: 'Are you sure?',
@@ -102,13 +85,13 @@
                                                     })
                                                 })
                                             </script>
-                                            <form id="del#{{ $user->id }}"
+                                             <form id="del#{{ $user->id }}"
                                                 action="{{ route('app.users.destroy', $user->id) }}" method="POST"
                                                  style="display: inline-block;">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             </form>
-                                        </div>
+                                          
                                     </td>
                                 </tr>
                             @endforeach
@@ -116,18 +99,18 @@
                     </table>
                 </div>
                 <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
-                    aria-label="Table navigation">
-                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                        Showing
-                       
-                        <span class="font-semibold text-gray-900 dark:text-white">{{ $users->lastItem() }}</span>
-                        of
-                        <span class="font-semibold text-gray-900 dark:text-white">{{ $users->total() }}</span>
-                    </span>
-                    <ul class="inline-flex items-stretch -space-x-px">
-                        {{ $users->links('pagination::tailwind') }}
-                    </ul>
-                </nav>
+                aria-label="Table navigation">
+                <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                    Showing
+                   
+                    <span class="font-semibold text-gray-900 dark:text-white">{{ $users->lastItem() }}</span>
+                    of
+                    <span class="font-semibold text-gray-900 dark:text-white">{{ $users->total() }}</span>
+                </span>
+                <ul class="inline-flex items-stretch -space-x-px">
+                    {{ $users->links('pagination::tailwind') }}
+                </ul>
+            </nav>
             </div>
         </div>
     </section>
