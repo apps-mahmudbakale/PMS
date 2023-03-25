@@ -4,7 +4,7 @@
         <div class="relative pr-10">
 
             <div
-                class="min-w-5 h-5 rounded-full p-1 bg-red-600 text-white text-xs grid place-content-center absolute -top-9 left-20 ">
+                class="min-w-5 h-5 rounded-full p-1 bg-red-600 text-white text-xs grid place-content-center absolute -top-7 left-20 ">
                 26
             </div>
         </div>
