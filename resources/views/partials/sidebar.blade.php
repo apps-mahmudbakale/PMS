@@ -21,7 +21,8 @@
                 aria-controls="dropdown-authentication" data-collapse-toggle="dropdown-authentication">
                 <span class="flex-1 ml-3 text-left whitespace-nowrap">Authentication</span>
             </a>
-            <ul id="dropdown-authentication" class="hidden py-2 space-y-2">
+            <ul id="dropdown-authentication"
+                class="{{ request()->is('app/users*') && request()->is('app/roles*') ? '' : 'hidden' }}  py-2 space-y-2">
                 <li class="{{ request()->is('app/users*') ? 'bg-white bg-opacity-10' : '' }}">
                     <a href="{{ route('app.users.index') }}"
                         class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 text-white ">
