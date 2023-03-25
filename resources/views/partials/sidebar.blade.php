@@ -28,7 +28,7 @@
                         Users</a>
                 </li>
                 <li class="{{ request()->is('app/roles*') ? 'bg-white bg-opacity-10' : '' }}">
-                    <a href="#"
+                    <a href="{{ route('app.roles.index') }}"
                         class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group text-white ">Roles</a>
                 </li>
 
