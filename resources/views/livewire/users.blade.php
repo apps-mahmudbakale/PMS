@@ -45,7 +45,7 @@
                                 <th scope="col" class="px-4 py-3">Email</th>
                                 <th scope="col" class="px-4 py-3">Phone</th>
                                 <th scope="col" class="px-4 py-3">Role</th>
-                                <th scope="col" class="px-4 py-3">
+                                <th scope="col" class="px-4 py-3 ">
                                     Actions
                                 </th>
                             </tr>
