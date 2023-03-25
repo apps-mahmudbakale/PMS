@@ -4,7 +4,7 @@
     <section class="flex relative pb-24">
         @include('partials.sidebar')
         <main class="w-full min-h-screen pl-[260px] bg-[#F5F5F5]">
-            @include('partials.header')
+            @include('partials.header', ['title' => 'Update User'])
             <section class="p-10">
                 <section class="bg-white dark:bg-gray-900">
                     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
