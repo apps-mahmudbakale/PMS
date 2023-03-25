@@ -6,7 +6,7 @@
         <main class="w-full min-h-screen pl-[260px] bg-[#F5F5F5]">
             @include('partials.header', ['title' => 'Update Role'])
             <nav class="bg-white flex items-center p-3 text-gray-600 border border-gray-200 font-semibold">
-                <a href="{{ rooute('app.roles.index') }}" class="text-center mx-6 text-gray-400">Roles</a>
+                <a href="{{ route('app.roles.index') }}" class="text-center mx-6 text-gray-400">Roles</a>
                 <a href="" class="text-center mx-6">Edit Roles</a>
             </nav>
 
@@ -27,17 +27,24 @@
                                         placeholder="Type the Role title" required="">
                                 </div>
                             </div>
+                            
                             <div class="grid grid-cols-3">
                                 @foreach ($permissions as $permission)
                                 <div class="flex items-center p-4  border-gray-200 rounded dark:border-gray-700">
                                     <input id="bordered-checkbox-2"  {{ (in_array($permission->id, old('permissions', [])) || isset($role) && $role->permissions->contains($permission->id)) ? 'checked' : '' }} type="checkbox" value="{{ $permission->id }}"
-                                        name="permission[]"
+                                        name="permissions[]"
                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="bordered-checkbox-2"
                                         class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $permission->name }}
                                     </label>
                                 </div>
                                 @endforeach
+                            </div>
+                            <div>
+                                <button type="submit"
+                                    class=" w-24 text-center  pl-6 px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium  text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                    Submit
+                                </button>
                             </div>
                         </form>
                     </div>
