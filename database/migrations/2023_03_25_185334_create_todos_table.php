@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->integer('supervisor_id');
+            $table->integer('user_id');
+            $table->string('task_name');
+            $table->enum('status', ['todo', 'pending', 'done']);
             $table->timestamps();
         });
     }

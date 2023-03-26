@@ -11,12 +11,12 @@
                     <div
                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
                         <div class="flex items-center space-x-3 w-full md:w-auto ">
-                            <button id="actionsDropdownButton" data-dropdown-toggle="actionsDropdown"
+                            <a href="{{ route('app.projects.create') }}"
                                 class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                                 type="button">
 
                                 Create New Project
-                            </button>
+                            </a>
 
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                                 <div class=" inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 
                                 </div>
-                                <input type="text" id="simple-search"
+                                <input type="text" id="simple-search" wire:model="search"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="Search" required="">
                             </div>
@@ -45,87 +45,75 @@
                                 <th scope="col" class="px-4 py-3">Project</th>
                                 <th scope="col" class="px-4 py-3">Members</th>
                                 <th scope="col" class="px-4 py-3">Progress</th>
-
                                 <th scope="col" class="px-4 py-3">Action</th>
-
                             </tr>
                         </thead>
-
-
                         <tbody>
+                            @foreach ($projects as $project)
+                                <tr class="border-b dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $loop->iteration }}
+                                    </th>
+                                    <th scope="row"
+                                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $project->name }}
+                                    </th>
+                                    <td class="px-4 py-3 flex text-gray-600 text-center ">
+                                        <div class="w-9 h-9 pt-2 rounded-full bg-gray-100 ">ZB</div>
+                                        <div class="w-9 h-9  pt-2  rounded-full bg-gray-100 -ml-3">MB</div>
+                                        <div class="w-9 h-9 pt-2 rounded-full bg-gray-100 -ml-3">NM</div>
+                                        <div class="pt-2.5 px-1 text-xs">+2</div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="bg-gray-100 w-40 h-3 rounded-full m-2">
+                                            <div class="bg-green-600 w-20 h-3 rounded-full"> </div>
+                                        </div>
+                                    </td>
 
-                            <tr class="border-b dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">1
-                                </th>
-                                <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">How to
-                                    Get Away With Murder
-                                </th>
-                                <td class="px-4 py-3 flex text-gray-600 text-center ">
-                                    <div class="w-9 h-9 pt-2 rounded-full bg-gray-100 ">ZB</div>
-                                    <div class="w-9 h-9  pt-2  rounded-full bg-gray-100 -ml-3">MB</div>
-                                    <div class="w-9 h-9 pt-2 rounded-full bg-gray-100 -ml-3">NM</div>
-                                    <div class="pt-2.5 px-1 text-xs">+2</div>
-                                </td>
-                                <td class="px-4 py-3">
-                                    <div class="bg-gray-100 w-40 h-3 rounded-full m-2">
-                                        <div class="bg-green-600 w-20 h-3 rounded-full"> </div>
-                                    </div>
-                                </td>
+                                    <td class="px-4 py-3">
+                                        <a href="{{ route('app.projects.show', $project->id) }}" aria-current="page"
+                                            id="" data-value=""
+                                            class="px-3 py-2 text-xs font-medium text-center text-white bg-green-600 rounded hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                            View
+                                            </button>
+                                            <a href="{{ route('app.projects.edit', $project->id) }}" aria-current="page"
+                                                class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                Edit
+                                            </a>
+                                            <button aria-current="page" id="del{{ $project->id }}"
+                                                data-value="{{ $project->id }}"
+                                                class="px-3 py-2 text-xs ml-1 font-medium text-center text-white bg-red-600 rounded hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                                Delete
+                                            </button>
+                                            <script>
+                                                document.querySelector('#del{{ $project->id }}').addEventListener('click', function(e) {
+                                                    // alert(this.getAttribute('data-value'));
+                                                    Swal.fire({
+                                                        title: 'Are you sure?',
+                                                        text: "You won't be able to revert this!",
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        confirmButtonText: 'Yes, delete it!'
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            document.getElementById('del#' + this.getAttribute('data-value')).submit();
+                                                        }
+                                                    })
+                                                })
+                                            </script>
+                                            <form id="del#{{ $project->id }}"
+                                                action="{{ route('app.projects.destroy', $project->id) }}"
+                                                method="POST" style="display: inline-block;">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            </form>
+                                    </td>
 
-                                <td class="px-4 py-3">
-                                    <button aria-current="page" id="" data-value=""
-                                        class="px-3 py-2 text-xs font-medium text-center text-white bg-green-600 rounded hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                                        View
-                                    </button>
-                                    <a href="" aria-current="page"
-                                        class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Edit
-                                    </a>
-                                    <button aria-current="page" id="" data-value=""
-                                        class="px-3 py-2 text-xs ml-1 font-medium text-center text-white bg-red-600 rounded hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                                        Delete
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-                            <tr class="border-b dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">2
-                                </th>
-                                <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">How to
-                                    Get Away With Murder
-                                </th>
-                                <td class="px-4 py-3">
-                                    <div class="w-7 h-7 rounded-full bg-blue-600"></div>
-                                </td>
-                                <td class="px-4 py-3">
-                                    <div class="bg-gray-100 w-40 h-3 rounded-full m-2">
-                                        <div class="bg-green-600 w-20 h-3 rounded-full"> </div>
-                                    </div>
-                                </td>
-
-                                <td class="px-4 py-3">
-                                    <button aria-current="page" id="" data-value=""
-                                        class="px-3 py-2 text-xs font-medium text-center text-white bg-green-600 rounded hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                                        View
-                                    </button>
-                                    <a href="" aria-current="page"
-                                        class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Edit
-                                    </a>
-                                    <button aria-current="page" id="" data-value=""
-                                        class="px-3 py-2 text-xs ml-1 font-medium text-center text-white bg-red-600 rounded hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                                        Delete
-                                    </button>
-
-                                </td>
-                            </tr>
-
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -135,58 +123,16 @@
                     aria-label="Table navigation">
                     <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                         Showing
-                        <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">{{ $projects->firstItem() }}-{{ $projects->lastItem() }}</span>
                         of
-                        <span class="font-semibold text-gray-900 dark:text-white">50</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">{{ $projects->total() }}</span>
                     </span>
                     <ul class="inline-flex items-stretch -space-x-px">
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <span class="sr-only">Previous</span>
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                        </li>
-                        <li>
-                            <a href="#" aria-current="page"
-                                class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">100</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <span class="sr-only">Next</span>
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </li>
+                        {{ $projects->links('pagination::tailwind') }}
                     </ul>
                 </nav>
             </div>
         </div>
-    </section>
+</div>
+</section>
 </div>

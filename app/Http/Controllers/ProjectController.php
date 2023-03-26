@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -20,7 +21,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -28,7 +29,8 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $project = Project::create(array_merge($request->all(), ['user_id' => auth()->user()->id]));
+        return redirect()->route('app.projects.index')->with('success', 'Project Created');
     }
 
     /**
@@ -36,7 +38,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -44,7 +46,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -52,7 +54,8 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->update(array_merge($request->all(), ['user_id' => auth()->user()->id]));
+        return redirect()->route('app.projects.index')->with('success', 'Project Updated');
     }
 
     /**
@@ -60,6 +63,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('app.projects.index')->with('success', 'Project Deleted');
     }
 }

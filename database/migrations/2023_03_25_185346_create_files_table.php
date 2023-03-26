@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('project_id')->references('id')->on('projects');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('file_name');
             $table->timestamps();
         });
     }
