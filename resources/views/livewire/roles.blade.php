@@ -80,10 +80,9 @@
             aria-label="Table navigation">
             <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                 Showing
-
-                <span class="font-semibold text-gray-900 dark:text-white">4</span>
+                <span class="font-semibold text-gray-900 dark:text-white">{{ $roles->firstItem() }}-{{ $roles->lastItem() }}</span>
                 of
-                <span class="font-semibold text-gray-900 dark:text-white">6</span>
+                <span class="font-semibold text-gray-900 dark:text-white">{{ $roles->total() }}</span>
             </span>
             <ul class="inline-flex items-stretch -space-x-px">
                 {{ $roles->links('pagination::tailwind') }}

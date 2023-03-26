@@ -103,7 +103,7 @@
                 <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                     Showing
                    
-                    <span class="font-semibold text-gray-900 dark:text-white">{{ $users->lastItem() }}</span>
+                    <span class="font-semibold text-gray-900 dark:text-white">{{ $users->firstItem() }}-{{ $users->lastItem() }}</span>
                     of
                     <span class="font-semibold text-gray-900 dark:text-white">{{ $users->total() }}</span>
                 </span>
