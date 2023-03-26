@@ -58,6 +58,24 @@ class ProjectController extends Controller
         return redirect()->route('app.projects.index')->with('success', 'Project Updated');
     }
 
+
+    public function todo($id){
+        return view('projects.todo');
+    }
+
+
+
+
+    public function docs($id){
+        return view('projects.docs');
+    }
+
+
+
+    public function schedules($id){
+        return view('projects.schedules');
+    }
+
     /**
      * Remove the specified resource from storage.
      */
