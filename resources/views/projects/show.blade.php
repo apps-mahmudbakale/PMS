@@ -6,7 +6,7 @@
         <main class="w-full min-h-screen pl-[260px] bg-[#F5F5F5]">
             @include('partials.header', ['title' => 'Project'])
             <section class="p-10">
-               <livewire:projects />
+               Work Here.....
             </section>
         </main>
     </section>
