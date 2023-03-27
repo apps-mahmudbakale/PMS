@@ -2,11 +2,196 @@
 
 @section('content')
     <section class="flex relative pb-24">
-       @include('partials.sidebar')
+        @include('partials.sidebar')
         <main class="w-full min-h-screen pl-[260px] bg-[#F5F5F5]">
             @include('partials.header', ['title' => 'TODOS'])
             <section class="p-10">
-               three Todo cards goes Here
+
+                <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5  h-full rounded-lg h-full ">
+                    <!-- Start coding here -->
+                    <div class="flex  justify-between mr-9">
+
+                        <div class=" flex pl-4 mt-6">
+                            <div class=" mr-3">
+                                <input checked id="red-checkbox" type="checkbox" value=""
+                                    class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="red-checkbox"
+                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300">To-do</label>
+                            </div>
+
+                            <div class=" mr-3">
+                                <input checked id="purple-checkbox" type="checkbox" value=""
+                                    class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="purple-checkbox"
+                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300">Pending</label>
+                            </div>
+                            <div class=" mr-3">
+                                <input checked id="green-checkbox" type="checkbox" value=""
+                                    class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="green-checkbox"
+                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300">Done</label>
+                            </div>
+
+                        </div>
+
+                        <div></div>
+                    </div>
+                    <div class="grid lg:grid-cols-3  md:grid-cols-2 pt-4 justify-center pr-12">
+
+
+                        <div
+                            class="max-w-sm p-4 bg-white border border-gray-200 shadow-xl rounded-lg dark:bg-gray-800 dark:border-gray-700 h-80 w-full m-4  mr-2">
+
+                            <h5
+                                class="mb-2 text-2xl flex flex-col items-center font-bold tracking-tight text-gray-700 dark:text-white border-b-2 ">
+                                To-Do
+                            </h5>
+
+                            <ol class="list-decimal pl-2">
+                                <li>
+                                    <div class="flex justify-between">
+                                        <div class="">Clean</div>
+
+                                        <div class=" flex">
+                                            <div class=" mr-1">
+                                                <input checked id="red-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="red-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+
+                                            <div class=" mr-1">
+                                                <input checked id="purple-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="purple-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+                                            <div class=" mr-1">
+                                                <input checked id="green-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="green-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex justify-between">
+                                        <div class="">Clean</div>
+
+                                        <div class=" flex">
+                                            <div class=" mr-1">
+                                                <input checked id="red-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="red-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+
+                                            <div class=" mr-1">
+                                                <input checked id="purple-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="purple-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+                                            <div class=" mr-1">
+                                                <input checked id="green-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="green-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+
+                        </div>
+
+                        <div
+                            class="max-w-sm p-4 bg-white border border-gray-200 shadow-xl rounded-lg dark:bg-gray-800 dark:border-gray-700 h-80 w-full m-4  mr-2">
+
+                            <h5
+                                class="mb-2 text-2xl flex flex-col items-center font-bold tracking-tight text-gray-700 dark:text-white border-b-2 ">
+                                Pending
+                            </h5>
+                            <ol class="list-decimal pl-2">
+                                <li>
+                                    <div class="flex justify-between">
+                                        <div class="">Clean</div>
+
+                                        <div class=" flex">
+                                            <div class=" mr-1">
+                                                <input checked id="red-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="red-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+
+                                            <div class=" mr-1">
+                                                <input checked id="purple-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="purple-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+                                            <div class=" mr-1">
+                                                <input checked id="green-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="green-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+
+                        </div>
+                        <div
+                            class="max-w-sm p-4 bg-white border border-gray-200 shadow-xl rounded-lg dark:bg-gray-800 dark:border-gray-700 h-80 w-full m-4  mr-2">
+
+                            <h5
+                                class="mb-2 text-2xl flex flex-col items-center font-bold tracking-tight text-gray-700 dark:text-white border-b-2 ">
+                                Done
+                            </h5>
+                            <ol class="list-decimal pl-2">
+                                <li>
+                                    <div class="flex justify-between">
+                                        <div class="">Clean</div>
+
+                                        <div class=" flex">
+                                            <div class=" mr-1">
+                                                <input checked id="red-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="red-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+
+                                            <div class=" mr-1">
+                                                <input checked id="purple-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="purple-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+                                            <div class=" mr-1">
+                                                <input checked id="green-checkbox" type="checkbox" value=""
+                                                    class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="green-checkbox"
+                                                    class=" text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+
+
+                        </div>
+
+                    </div>
+
+                </section>
+
             </section>
         </main>
     </section>
