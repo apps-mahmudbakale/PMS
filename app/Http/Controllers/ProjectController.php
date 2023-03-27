@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Project;
-use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
+use GuzzleHttp\Handler\Proxy;
 
 class ProjectController extends Controller
 {
@@ -38,7 +39,11 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        $roleName = 'user';
+        $users = User::whereHas('roles', function ($q) use ($roleName) {
+            $q->where('name', $roleName);
+        })->get();
+        return view('projects.show', compact('project', 'users'));
     }
 
     /**
