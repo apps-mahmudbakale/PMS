@@ -6,7 +6,7 @@
         <main class="w-full min-h-screen pl-[260px] bg-[#F5F5F5]">
             @include('partials.header', ['title' => 'Docs & Files'])
             <section class="p-10">
-            
+
 
                 <div>
                     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
@@ -36,11 +36,9 @@
                                             class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                             <tr>
                                                 <th scope="col" class="px-4 py-3">S/N</th>
-                                                <th scope="col" class="px-4 py-3">First Name</th>
-                                                <th scope="col" class="px-4 py-3">Last Name</th>
-                                                <th scope="col" class="px-4 py-3">Email</th>
-                                                <th scope="col" class="px-4 py-3">Phone</th>
-                                                <th scope="col" class="px-4 py-3">Role</th>
+                                                <th scope="col" class="px-4 py-3">File Name</th>
+                                                <th scope="col" class="px-4 py-3">User</th>
+
                                                 <th scope="col" class="px-4 py-3 ">
                                                     Actions
                                                 </th>
@@ -49,9 +47,6 @@
                                         <tbody>
 
                                             <tr class="border-b dark:border-gray-700">
-                                                <td class="px-4 py-3"></td>
-                                                <td class="px-4 py-3"></td>
-                                                <td class="px-4 py-3"></td>
                                                 <td class="px-4 py-3"></td>
                                                 <td class="px-4 py-3"></td>
                                                 <td class="px-4 py-3"></td>
