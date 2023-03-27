@@ -31,5 +31,5 @@ Route::group(['prefix' => 'app', 'as' => 'app.', 'middleware' => 'auth'], functi
     Route::resource('projects', ProjectController::class);
     Route::get('projects/todos/{id}', [ProjectController::class, 'todo'])->name('projects.todo');
     Route::get('projects/docs/{id}', [ProjectController::class, 'docs'])->name('projects.docs');
-    Route::get('projects/schedules/{id}', [ProjectController::class, 'schedule'])->name('projects.schedules');
+    Route::get('projects/schedules/{id}', [ProjectController::class, 'schedules'])->name('projects.schedules');
 });
